@@ -1,9 +1,10 @@
 import React from 'react'
+import TextToSpeech from '../(components)/TextToSpeech'
 
 const Dashboard = () => {
   return (
     <div>
-      Dashboard
+      <TextToSpeech />
     </div>
   )
 }

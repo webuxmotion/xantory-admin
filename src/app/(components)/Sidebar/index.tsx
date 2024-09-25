@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/redux";
 import { setIsSidebarCollapsed } from "@/redux/state";
 import {
   Archive,
+  BookA,
   CircleDollarSign,
   Clipboard,
   Layout,
@@ -32,6 +33,7 @@ const SidebarLink = ({
   const pathname = usePathname();
   const isActive =
     pathname === href || (pathname === "/" && href === "/dashboard");
+    
 
   return (
     <Link href={href}>
@@ -104,6 +106,12 @@ const Sidebar = () => {
           href="/dashboard"
           icon={Layout}
           label="Dashboard"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLink
+          href="/learn-languages"
+          icon={BookA}
+          label="Learn Languages"
           isCollapsed={isSidebarCollapsed}
         />
         <SidebarLink
