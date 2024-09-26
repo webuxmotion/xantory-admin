@@ -1,5 +1,7 @@
 "use client"
 
+import { useAppDispatch, useAppSelector } from '@/redux/redux';
+import { setNumber } from '@/redux/state';
 import { useState, useEffect } from 'react';
 
 export default function TextToSpeech() { 
@@ -9,6 +11,16 @@ export default function TextToSpeech() {
   const [pitch, setPitch] = useState(1);
   const [rate, setRate] = useState(1);
   const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  const number = useAppSelector(
+    (state) => state.global.number
+  );
+
+  const increaseNumber = () => {
+    dispatch(setNumber(number + 1));
+  };
 
   let utterance;
 
@@ -136,6 +148,11 @@ export default function TextToSpeech() {
       <button onClick={handleCancel} disabled={!isSpeaking}>
         Cancel
       </button>
+
+
+      <br />
+      <button onClick={increaseNumber}>Increase</button>
+      <h1>Number: {number}</h1>
     </div>
   );
 }
